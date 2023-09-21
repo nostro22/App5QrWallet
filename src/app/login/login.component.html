@@ -1,0 +1,59 @@
+<ion-content class="ion-justify-content-evenly bg-success">
+
+  <ion-grid class="ion-justify-content-evenly">
+    <ion-row class="ion-justify-content-center ion-align-items-center">
+      <ion-img class="logo" src="https://media.giphy.com/media/3q2PVucWrPPZgZqNf8/giphy.gif" alt=""></ion-img>
+      <ion-img class="overlay" src="../../assets/app5IconS.png" alt=""></ion-img>
+    </ion-row>
+
+
+    <ion-row class="ion-justify-content-center ion-align-items-center">
+      <ion-button color="secondary" id="open-picker">Ingreso Rapido</ion-button>
+      <ion-picker  trigger="open-picker" [columns]="accountsPicker"
+        [buttons]="pickerButtons"></ion-picker>
+    </ion-row>
+    
+
+
+    <ion-row class="ion-justify-content-center ion-align-items-center">
+      <form [formGroup]="formUser" class="login-form">
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="10">
+            <ion-item color="primary" class=" mt-2">
+              <ion-label position="floating"><ion-icon name="mail-unread-sharp"></ion-icon> : Correo
+                Electronico</ion-label>
+              <ion-input formControlName="email" type="email" maxlength="30"></ion-input>
+            </ion-item>
+            <ion-item color="primary" class=" mt-2">
+              <ion-label position="floating"> <ion-icon name="lock-closed-sharp"></ion-icon> : Clave</ion-label>
+              <ion-input  fill="outline" formControlName="password" type="password" maxlength="13"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-justify-content-center ion-align-items-center">
+          <div [hidden]="email.valid || email.pristine">
+            <div class="alert alert-danger fw-normal" *ngIf="email.errors?.['required']">Correo electronico es requerido.</div>
+            <div class="alert alert-danger fw-light" *ngIf="email.hasError('pattern')">Correo electronico en formato incorrecto.</div>
+          </div>
+          <div [hidden]="password.valid || (password.pristine)">
+            <div *ngIf="password.errors?.['required']" class="alert alert-danger fw-normal">Clave es requerido.</div>
+            <div *ngIf="password.errors?.['minlength']" class="alert alert-danger fw-light">clave debe tener minimo 6 caracteres</div>
+            <div *ngIf="password.hasError('maxlength')" class="alert alert-danger fw-light">clave debe tener maximo 12 caracteres</div>
+          </div>
+        </ion-row>
+        <ion-row class="ion-justify-content-center ion-align-items-center">
+          <ion-col class="align-items-center" size="5">
+            <ion-button [disabled]="formUser.invalid" color="primary" id="open-loading" expand="block"
+              class="login-button" (click)="login()">Ingresar</ion-button>
+          </ion-col>
+          <ion-col size="4">
+            <ion-button color="tertiary" (click)="clear()">Limpiar</ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-row>
+
+    <ion-loading class="custom-loading" trigger="open-loading" message="Loading..." [duration]="3000"></ion-loading>
+  </ion-grid>
+</ion-content>

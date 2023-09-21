@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-row class="justify-content-center align-items-center">
+      <div class="container d-flex justify-content-between align-items-center text-center">
+        <div class="ms-2 d-flex row justify-content-center align-items-center text-center  col-2">
+          <ion-icon class="mb-0 pb-0" style="font-size: 15vw;" color="danger" (click)="logout()"
+            name="log-in-sharp"></ion-icon>
+        </div>
+        <!-- <button type="button" (click)="creditosIniciales()">click</button> -->
+
+        <div class="d-flex row justify-content-center align-items-center text-center  col-6">
+          <p class="text-white mt-2 mb-0 pb-0 fw-bold">Bienvenido</p>
+          <ion-title style="font-size: 7vw;" class="text-center text-primary fw-bold ">{{ nombre }}</ion-title>
+        </div>
+        <div color="primary" class="me-2 d-flex row justify-content-center align-items-center text-center  col-2">
+          <ion-icon class="text-dark" style="font-size: 15vw;" (click)="limpiar()" name="wallet-sharp"></ion-icon>
+        </div>
+      </div>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="d-flex justify-content-center align-items-center" color="secondary">
+  <ion-card class="vh-40" class="bg-info bg-opacity-25" *ngIf="nombre">
+    <img alt="Silhouette of mountains" src="../../assets/app5IconS.png" />
+    <ion-card-header>
+      <ion-card-title class="text-center text-warning " style="font-size: 30vw;">${{creditos}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <div class="container d-flex justify-content-center align-items-center text-center">
+    <ion-button class="btn btn-outline-primary border-5 bg-info" style="height: 15vh; width: 80vw;" (click)="scan()"><ion-icon style="font-size: 25vw;" name="qr-code-sharp"></ion-icon></ion-button>
+  </div>
+  
+
+</ion-content>
